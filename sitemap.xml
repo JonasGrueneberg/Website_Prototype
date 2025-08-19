@@ -2,46 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://JonasGrueneberg.github.io/Website_Prototype/project_overview.html</loc>
-    <lastmod>2025-08-19T13:08:12.163Z</lastmod>
+    <lastmod>2025-08-19T13:12:18.670Z</lastmod>
   </url>
   <url>
     <loc>https://JonasGrueneberg.github.io/Website_Prototype/project_archive.html</loc>
-    <lastmod>2025-08-19T13:08:12.163Z</lastmod>
+    <lastmod>2025-08-19T13:12:18.670Z</lastmod>
   </url>
   <url>
-    <loc>https://JonasGrueneberg.github.io/Website_Prototype/projects/TestProjekt/student_projects/blauer_löwe/blauer_löwe.html</loc>
-    <lastmod>2025-08-19T13:09:32.924Z</lastmod>
+    <loc>https://JonasGrueneberg.github.io/Website_Prototype/projects/TestProjekt-1/student_projects/blauer_löwe/blauer_löwe.html</loc>
+    <lastmod>2025-08-19T13:14:33.722Z</lastmod>
   </url>
   <url>
-    <loc>https://JonasGrueneberg.github.io/Website_Prototype/projects/TestProjekt/student_projects/lila_gürteltier/lila_gürteltier.html</loc>
-    <lastmod>2025-08-19T13:09:32.945Z</lastmod>
+    <loc>https://JonasGrueneberg.github.io/Website_Prototype/projects/TestProjekt-1/student_projects/lila_gürteltier/lila_gürteltier.html</loc>
+    <lastmod>2025-08-19T13:14:33.743Z</lastmod>
   </url>
   <url>
-    <loc>https://JonasGrueneberg.github.io/Website_Prototype/projects/TestProjekt/student_projects/roter_affe/roter_affe.html</loc>
-    <lastmod>2025-08-19T13:09:32.946Z</lastmod>
+    <loc>https://JonasGrueneberg.github.io/Website_Prototype/projects/TestProjekt-1/student_projects/roter_affe/roter_affe.html</loc>
+    <lastmod>2025-08-19T13:14:33.744Z</lastmod>
   </url>
   <url>
-    <loc>https://JonasGrueneberg.github.io/Website_Prototype/projects/TestProjekt/TestProjekt_page.html</loc>
-    <lastmod>2025-08-19T13:09:32.905Z</lastmod>
+    <loc>https://JonasGrueneberg.github.io/Website_Prototype/projects/TestProjekt-1/TestProjekt-1_page.html</loc>
+    <lastmod>2025-08-19T13:14:33.703Z</lastmod>
   </url>
   <url>
-    <loc>https://JonasGrueneberg.github.io/Website_Prototype/projects/TestProjekt/student_projects/gelber_ochse/gelber_ochse.html</loc>
-    <lastmod>2025-08-19T13:09:32.943Z</lastmod>
+    <loc>https://JonasGrueneberg.github.io/Website_Prototype/projects/TestProjekt-2/student_projects/blauer_löwe/blauer_löwe.html</loc>
+    <lastmod>2025-08-19T13:14:33.745Z</lastmod>
   </url>
   <url>
-    <loc>https://JonasGrueneberg.github.io/Website_Prototype/projects/TestProjekt/student_projects/grüne_giraffe/grüne_giraffe.html</loc>
-    <lastmod>2025-08-19T13:09:32.944Z</lastmod>
+    <loc>https://JonasGrueneberg.github.io/Website_Prototype/projects/TestProjekt-2/student_projects/lila_gürteltier/lila_gürteltier.html</loc>
+    <lastmod>2025-08-19T13:14:33.747Z</lastmod>
   </url>
   <url>
-    <loc>https://JonasGrueneberg.github.io/Website_Prototype/projects/TestProjekt/student_projects/pinker_panther/pinker_panther.html</loc>
-    <lastmod>2025-08-19T13:09:32.946Z</lastmod>
+    <loc>https://JonasGrueneberg.github.io/Website_Prototype/projects/TestProjekt-2/student_projects/roter_affe/roter_affe.html</loc>
+    <lastmod>2025-08-19T13:14:33.748Z</lastmod>
+  </url>
+  <url>
+    <loc>https://JonasGrueneberg.github.io/Website_Prototype/projects/TestProjekt-2/student_projects/gelber_ochse/gelber_ochse.html</loc>
+    <lastmod>2025-08-19T13:14:33.746Z</lastmod>
+  </url>
+  <url>
+    <loc>https://JonasGrueneberg.github.io/Website_Prototype/projects/TestProjekt-2/student_projects/grüne_giraffe/grüne_giraffe.html</loc>
+    <lastmod>2025-08-19T13:14:33.746Z</lastmod>
+  </url>
+  <url>
+    <loc>https://JonasGrueneberg.github.io/Website_Prototype/projects/TestProjekt-2/student_projects/pinker_panther/pinker_panther.html</loc>
+    <lastmod>2025-08-19T13:14:33.748Z</lastmod>
+  </url>
+  <url>
+    <loc>https://JonasGrueneberg.github.io/Website_Prototype/projects/TestProjekt-2/TestProjekt-2_page.html</loc>
+    <lastmod>2025-08-19T13:14:33.744Z</lastmod>
+  </url>
+  <url>
+    <loc>https://JonasGrueneberg.github.io/Website_Prototype/projects/TestProjekt-1/student_projects/gelber_ochse/gelber_ochse.html</loc>
+    <lastmod>2025-08-19T13:14:33.741Z</lastmod>
+  </url>
+  <url>
+    <loc>https://JonasGrueneberg.github.io/Website_Prototype/projects/TestProjekt-1/student_projects/grüne_giraffe/grüne_giraffe.html</loc>
+    <lastmod>2025-08-19T13:14:33.742Z</lastmod>
+  </url>
+  <url>
+    <loc>https://JonasGrueneberg.github.io/Website_Prototype/projects/TestProjekt-1/student_projects/pinker_panther/pinker_panther.html</loc>
+    <lastmod>2025-08-19T13:14:33.743Z</lastmod>
   </url>
   <url>
     <loc>https://JonasGrueneberg.github.io/Website_Prototype/about.html</loc>
-    <lastmod>2025-08-19T13:08:12.163Z</lastmod>
+    <lastmod>2025-08-19T13:12:18.670Z</lastmod>
   </url>
   <url>
     <loc>https://JonasGrueneberg.github.io/Website_Prototype/index.html</loc>
-    <lastmod>2025-08-19T13:08:12.163Z</lastmod>
+    <lastmod>2025-08-19T13:12:18.670Z</lastmod>
   </url>
 </urlset>
