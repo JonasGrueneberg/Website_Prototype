@@ -1,0 +1,25 @@
+[
+  {
+    "listing": "/project_overview.html",
+    "items": [
+      "/projects/TestProjekt/TestProjekt_page.html"
+    ]
+  },
+  {
+    "listing": "/project_archive.html",
+    "items": [
+      "/projects/TestProjekt/TestProjekt_page.html"
+    ]
+  },
+  {
+    "listing": "/projects/TestProjekt/TestProjekt_page.html",
+    "items": [
+      "/projects/TestProjekt/student_projects/blauer_löwe/blauer_löwe.html",
+      "/projects/TestProjekt/student_projects/gelber_ochse/gelber_ochse.html",
+      "/projects/TestProjekt/student_projects/grüne_giraffe/grüne_giraffe.html",
+      "/projects/TestProjekt/student_projects/lila_gürteltier/lila_gürteltier.html",
+      "/projects/TestProjekt/student_projects/pinker_panther/pinker_panther.html",
+      "/projects/TestProjekt/student_projects/roter_affe/roter_affe.html"
+    ]
+  }
+]
