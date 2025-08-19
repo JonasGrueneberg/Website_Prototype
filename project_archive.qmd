@@ -1,0 +1,20 @@
+---
+title: "Projektarchiv"
+listing: 
+  id: all_projects
+  contents: 
+    - "projects/*/*.qmd"
+  type: table
+  sort: semester
+  sort-ui: [title, type, semester]
+  fields: 
+  - title
+  - type
+  - semester
+  - categories
+  field-display-names: 
+    title: Name
+    type: Projekttyp
+    semester: Semester
+    categories: Kategorien
+---

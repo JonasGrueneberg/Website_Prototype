@@ -1,0 +1,19 @@
+---
+title: "TestProjekt"
+type: "descriptive"
+semester: "WS 25-26"
+image: "image.png"
+categories: []
+listing:
+  id: student_projects
+  contents: ["student_projects/*/*.qmd"]
+  type: table
+  sort: title
+  fields: [title, authors]
+  field-display-names:
+    title: "Ausarbeitung"
+    authors: "Autor:innen"
+---
+
+Kurze Beschreibung des Projekts und Motivation
+

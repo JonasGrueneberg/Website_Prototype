@@ -1,0 +1,24 @@
+project:
+  type: website
+
+website:
+  title: "Website_Prototype"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: About
+      - href: project_overview.qmd
+        text: Projekte
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+
+
+

@@ -1,0 +1,23 @@
+---
+title: "Aktuelle Projekte"
+listing: 
+  id: actual_projects
+  contents: 
+    - "projects/*/*.qmd"
+  type: grid
+  sort: date
+  max-items: 6
+links:
+  - text: Projektarchiv
+    icon: envelope
+    href: prject_archives.qmd
+---
+
+Hier sehen sie einige Beispiele für Projekte aus den letzten Semestern.
+
+::: {#actual_projects}
+:::
+
+Weitere Projekte finden sie im Archiv.
+
+[Zum Archiv](project_archive.qmd){.btn .btn-primary}
