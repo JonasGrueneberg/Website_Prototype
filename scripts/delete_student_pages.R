@@ -2,7 +2,7 @@
 
 # Basisverzeichnis für Projekte
 ROOT <- normalizePath(".", winslash = "/")
-PROJECTS_ROOT <- file.path(ROOT, "quarto_pages", "projects")
+PROJECTS_ROOT <- file.path(ROOT, "projects")
 
 if (!dir.exists(PROJECTS_ROOT)) {
   stop("Verzeichnis nicht gefunden: ", PROJECTS_ROOT)
