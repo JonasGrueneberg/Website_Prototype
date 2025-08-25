@@ -283,7 +283,7 @@ generate_student_page <- function(sdir, project_name, md_df) {
   authors_line <- if (length(authors)) paste0("Autoren: ", paste(authors, collapse = ", "), "\n") else ""
   
   body <- paste(
-    authors_line, "",
+    #authors_line, "",
     assets_section(html_rel, mp4_rel),
     "",
     sep = "\n"

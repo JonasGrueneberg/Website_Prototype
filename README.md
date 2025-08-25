@@ -12,6 +12,12 @@ Um ein neues Projekt hinzuzufügen muss ein Ordner mit dem Namen des Projekts im
 
 - image.png für die Anzeige auf der Seite project overview
 
+- die Datei meta.yml die die Daten zu den Projekten enthält:
+    - "type": Typ des Projekts
+    - "semester"
+    - "categories": Liste mit Kategorien für das Projekt.
+    - "description": Beschreibung und Motivation des Projekts.
+
 - den ordner student_projects, dieser enthält für jede zu veröffentlichende Ausarbeitung einen Ordner der die HTML-Datei mit der Benennung Projekt_Projektname und den Screencast im .mp4 Format enthält.
 
 Um die Website upzudaten müssen nur die Änderungen auf github gepusht werden. Das triggert einen GitHub Actions Workflow der automatisch die .qmd seiten generiert und auf GitHub pages veröffentlicht.
