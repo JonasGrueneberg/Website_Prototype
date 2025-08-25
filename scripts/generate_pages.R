@@ -154,7 +154,7 @@ read_project_metadata <- function(pdir) {
   df
 }
 
-# Hilfsfunktionen für Top-3 aus Excel
+# ---- Top-3 aus Excel bestimmen ---------------------------------------------
 top3_student_folders <- function(md_df) {
   if (is.null(md_df) || !nrow(md_df)) return(character(0))
   rnk <- suppressWarnings(as.numeric(md_df$rank))
@@ -162,8 +162,11 @@ top3_student_folders <- function(md_df) {
   ord <- order(rnk, tolower(md_df$student_folder), na.last = TRUE)
   head(md_df$student_folder[ord][is.finite(rnk[ord])], 3)
 }
-
-paths_for_student_qmds <- function(folders) {
+top3_filenames <- function(folders) {
+  if (!length(folders)) return(character(0))
+  paste0(folders, ".qmd")
+}
+top3_paths <- function(folders) {
   if (!length(folders)) return(character(0))
   paste0("student_projects/", folders, "/", folders, ".qmd")
 }
@@ -177,24 +180,40 @@ generate_project_page <- function(pdir, md_df) {
   m <- read_meta(file.path(pdir, "meta.yml"))
   for (k in names(m)) meta[[k]] <- m[[k]]
   
-  # Top-3 Ordner aus Excel bestimmen & Pfade bauen
-  top3_folders <- top3_student_folders(md_df)
-  top3_paths   <- paths_for_student_qmds(top3_folders)
-  # Exklusionsmuster für das Tabellen-Listing
-  rest_patterns <- if (length(top3_paths)) paste0("! ", top3_paths) else character(0)
+  # Top-3 bestimmen
+  t3_folders <- top3_student_folders(md_df)
+  t3_files   <- top3_filenames(t3_folders)  # nur Dateinamen, z.B. "gruppe_a.qmd"
+  t3_paths   <- top3_paths(t3_folders)      # Pfade für das Grid (optional nicht nötig)
   
-  # YAML für die zwei Listings zusammenbauen
-  top3_contents_yaml <- if (length(top3_paths)) {
-    paste0("    contents:\n", paste(sprintf('      - "%s"', top3_paths), collapse = "\n"))
-  } else {
-    # wenn keine Top3 ermittelbar sind, bleibt das Grid einfach leer
-    '    contents: []'
-  }
+  # YAML für die zwei Listings:
+  # 1) Grid der Top-3: sortiere nach rank und zeige max. 3 Einträge
+  # 2) Tabelle der restlichen: schließe Top-3 über 'exclude: filename: [...]' aus
+  top3_block <- paste(
+    "  - id: top3",
+    '    contents: ["student_projects/*/*.qmd"]',
+    "    type: grid",
+    "    grid-columns: 3",
+    "    sort: rank",
+    "    max-items: 3",
+    sep = "\n"
+  )
   
-  rest_contents_yaml <- paste(
-    '    contents:',
-    '      - "student_projects/*/*.qmd"',
-    if (length(rest_patterns)) paste(sprintf('      - "%s"', rest_patterns), collapse = "\n") else NULL,
+  rest_block <- paste(
+    "  - id: rest",
+    '    contents: ["student_projects/*/*.qmd"]',
+    "    type: table",
+    "    sort: rank",
+    "    fields: [rank, title, authors]",
+    "    field-display-names:",
+    '      rank: "Rang"',
+    '      title: "Ausarbeitung"',
+    '      authors: "Autor:innen"',
+    if (length(t3_files)) {
+      paste0("    exclude:\n",
+             "      filename: [",
+             paste(sprintf('"%s"', t3_files), collapse = ", "),
+             "]")
+    } else NULL,
     sep = "\n"
   )
   
@@ -205,19 +224,8 @@ generate_project_page <- function(pdir, md_df) {
     sprintf('semester: "%s"', meta$semester),
     sprintf("categories: %s", yaml_vec(meta$categories)),
     "listing:",
-    "  - id: top3",
-    top3_contents_yaml,
-    "    type: grid",
-    "    grid-columns: 3",
-    "  - id: rest",
-    rest_contents_yaml,
-    "    type: table",
-    "    sort: rank",
-    "    fields: [rank, title, authors]",
-    "    field-display-names:",
-    '      rank: "Rang"',
-    '      title: "Ausarbeitung"',
-    '      authors: "Autor:innen"',
+    top3_block,
+    rest_block,
     "---"
   ), collapse = "\n")
   
