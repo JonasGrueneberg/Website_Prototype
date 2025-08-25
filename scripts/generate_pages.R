@@ -67,17 +67,15 @@ clean_authors <- function(...) {
   x <- x[!is.na(x)]
   x <- trimws(x)
   x <- x[nzchar(x)]
-  # falls in einer Zelle "Max Mustermann, Erika Muster" steht:
   x <- unlist(strsplit(x, "\\s*,\\s*"))
   x <- trimws(x)
   x <- x[nzchar(x)]
-  unique(x)  # doppelte entfernen
+  unique(x)
 }
 
 # ------------------------------------------------------------
 # HTML & MP4 finden
 # ------------------------------------------------------------
-# Sucht im Team-Ordner nach "Projekt_<Projektname>.html|.htm" (Case-insensitive)
 find_student_html <- function(sdir, project_name) {
   files <- list.files(sdir, full.names = FALSE)
   if (!length(files)) return(NULL)
@@ -90,7 +88,6 @@ find_student_html <- function(sdir, project_name) {
   if (length(hit)) files[hit[1]] else NULL
 }
 
-# Findet genau eine .mp4 im Ordner (Dateiname egal). Falls mehrere, bevorzuge "Screencast.mp4".
 find_student_mp4 <- function(sdir) {
   mp4s <- list.files(sdir, pattern = "\\.mp4$", full.names = FALSE, ignore.case = TRUE)
   if (length(mp4s) == 0) return(NULL)
@@ -99,7 +96,6 @@ find_student_mp4 <- function(sdir) {
   if (length(pref)) pref[1] else mp4s[1]
 }
 
-# Abstand zwischen Video und iFrame via CSS-Margin
 assets_section <- function(html_rel = NULL, mp4_rel = NULL) {
   parts <- character()
   if (!is.null(mp4_rel)) {
@@ -144,7 +140,6 @@ read_project_metadata <- function(pdir) {
   if (!length(candidates)) return(NULL)
   f <- candidates[1]
   df <- readxl::read_excel(f)
-  # Spaltennamen robust machen
   names(df) <- tolower(gsub("\\s+", "_", names(df)))
   needed <- c("student_folder", "author1", "author2", "author3", "rank")
   missing <- setdiff(needed, names(df))
@@ -159,76 +154,113 @@ read_project_metadata <- function(pdir) {
   df
 }
 
+# Hilfsfunktionen für Top-3 aus Excel
+top3_student_folders <- function(md_df) {
+  if (is.null(md_df) || !nrow(md_df)) return(character(0))
+  rnk <- suppressWarnings(as.numeric(md_df$rank))
+  rnk[is.na(rnk)] <- Inf
+  ord <- order(rnk, tolower(md_df$student_folder), na.last = TRUE)
+  head(md_df$student_folder[ord][is.finite(rnk[ord])], 3)
+}
+
+paths_for_student_qmds <- function(folders) {
+  if (!length(folders)) return(character(0))
+  paste0("student_projects/", folders, "/", folders, ".qmd")
+}
+
 # ------------------------------------------------------------
 # Seiten-Generatoren
 # ------------------------------------------------------------
-generate_project_page <- function(pdir) {
+generate_project_page <- function(pdir, md_df) {
   pname <- basename(pdir)
   meta <- DEFAULTS$project
   m <- read_meta(file.path(pdir, "meta.yml"))
   for (k in names(m)) meta[[k]] <- m[[k]]
   
-  front <- sprintf(
-    paste(
-      "---",
-      'title: "%s"',
-      'type: "%s"',
-      'semester: "%s"',
-      'image: "image.png"',
-      "categories: %s",
-      "listing:",
-      "  id: student_projects",
-      '  contents: ["student_projects/*/*.qmd"]',
-      "  type: table",
-      "  sort: title",
-      "  fields: [title, authors]",       # bei Bedarf auf [rank, title, authors] ändern und sort: rank
-      "  field-display-names:",
-      '    title: "Ausarbeitung"',
-      '    authors: "Autor:innen"',
-      "---",
-      sep = "\n"
-    ),
-    (m$title %||% slug_to_title(pname)),
-    meta$type, meta$semester, yaml_vec(meta$categories)
+  # Top-3 Ordner aus Excel bestimmen & Pfade bauen
+  top3_folders <- top3_student_folders(md_df)
+  top3_paths   <- paths_for_student_qmds(top3_folders)
+  # Exklusionsmuster für das Tabellen-Listing
+  rest_patterns <- if (length(top3_paths)) paste0("! ", top3_paths) else character(0)
+  
+  # YAML für die zwei Listings zusammenbauen
+  top3_contents_yaml <- if (length(top3_paths)) {
+    paste0("    contents:\n", paste(sprintf('      - "%s"', top3_paths), collapse = "\n"))
+  } else {
+    # wenn keine Top3 ermittelbar sind, bleibt das Grid einfach leer
+    '    contents: []'
+  }
+  
+  rest_contents_yaml <- paste(
+    '    contents:',
+    '      - "student_projects/*/*.qmd"',
+    if (length(rest_patterns)) paste(sprintf('      - "%s"', rest_patterns), collapse = "\n") else NULL,
+    sep = "\n"
   )
   
-  body <- paste(meta$description %||% "", "", sep = "\n")
+  front <- paste(c(
+    "---",
+    sprintf('title: "%s"', (m$title %||% slug_to_title(pname))),
+    sprintf('type: "%s"', meta$type),
+    sprintf('semester: "%s"', meta$semester),
+    sprintf("categories: %s", yaml_vec(meta$categories)),
+    "listing:",
+    "  - id: top3",
+    top3_contents_yaml,
+    "    type: grid",
+    "    grid-columns: 3",
+    "  - id: rest",
+    rest_contents_yaml,
+    "    type: table",
+    "    sort: rank",
+    "    fields: [rank, title, authors]",
+    "    field-display-names:",
+    '      rank: "Rang"',
+    '      title: "Ausarbeitung"',
+    '      authors: "Autor:innen"',
+    "---"
+  ), collapse = "\n")
+  
+  body <- paste(
+    meta$description %||% "", "",
+    "## Top 3 Ausarbeitungen",
+    "",
+    "::: {#top3}",
+    ":::",
+    "",
+    "## Weitere Ausarbeitungen",
+    "",
+    "::: {#rest}",
+    ":::",
+    "",
+    sep = "\n"
+  )
+  
   out_path <- file.path(pdir, sprintf("%s_page.qmd", pname))
   write_if_missing(out_path, paste(front, body, sep = "\n"))
 }
 
 generate_student_page <- function(sdir, project_name, md_df) {
   sname <- basename(sdir)
-  # Titel ggf. aus meta.yml, ansonsten Slug
   m <- read_meta(file.path(sdir, "meta.yml"))
   title <- m$title %||% slug_to_title(sname)
   
-  # --- Excel-Zeile für diesen student_folder holen
+  # Excel-Zeile für diesen student_folder
   authors <- character(0)
   rank_val <- NA_character_
-  
   if (!is.null(md_df)) {
     row <- md_df[tolower(md_df$student_folder) == tolower(sname), , drop = FALSE]
     if (nrow(row) >= 1) {
       authors <- clean_authors(row$author1[1], row$author2[1], row$author3[1])
       rank_val <- as.character(row$rank[1])
     } else {
-      message("Warnung: Kein Eintrag in metadata für student_folder='", sname, "' in Projekt '", project_name, "'.")
+      message("Warnung: Kein Eintrag in metadata für student_folder='", sname, "'.")
     }
-  } else {
-    message("Hinweis: Keine 'metadata.xlsx' in Projekt '", project_name, "' gefunden – Autoren/Rang werden nicht gesetzt.")
   }
   
-  # optional: Autoren aus meta.yml ergänzen (falls dort zusätzlich gepflegt)
-  if (!is.null(m$authors)) {
-    authors <- unique(c(authors, clean_authors(m$authors)))
-  }
-  
-  # HTML & MP4 automatisch finden
   html_rel <- find_student_html(sdir, project_name)
   mp4_rel  <- find_student_mp4(sdir)
   
-  # Frontmatter
   front_lines <- c(
     "---",
     sprintf('title: "%s"', title),
@@ -241,12 +273,9 @@ generate_student_page <- function(sdir, project_name, md_df) {
   front <- paste(front_lines, collapse = "\n")
   
   authors_line <- if (length(authors)) paste0("Autoren: ", paste(authors, collapse = ", "), "\n") else ""
-  #rank_line    <- if (!is.null(rank_val) && nzchar(trimws(rank_val))) paste0("Rang: ", rank_val, "\n") else ""
   
   body <- paste(
-    authors_line,
-    #rank_line,
-    "",
+    authors_line, "",
     assets_section(html_rel, mp4_rel),
     "",
     sep = "\n"
@@ -269,13 +298,13 @@ main <- function() {
   for (p in sort(projects)) {
     pname <- basename(p)
     
-    # 1) Projektseite erzeugen (falls fehlt)
-    generate_project_page(p)
-    
-    # 2) Excel des Projekts lesen
+    # 1) Excel des Projekts lesen (für Top-3 & Team-Metadaten)
     md_df <- read_project_metadata(p)  # NULL, falls nicht vorhanden
     
-    # 3) Team-Seiten erzeugen
+    # 2) Projektseite mit Grid(Top3) + Table(Rest) erzeugen
+    generate_project_page(p, md_df)
+    
+    # 3) Team-Seiten erzeugen/ergänzen
     sp_root <- file.path(p, "student_projects")
     if (dir.exists(sp_root)) {
       students <- list.dirs(sp_root, full.names = TRUE, recursive = FALSE)
