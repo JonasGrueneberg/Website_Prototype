@@ -4,7 +4,7 @@
     "href": "project_overview.html",
     "title": "Aktuelle Projekte",
     "section": "",
-    "text": "Hier sehen sie einige Beispiele für Projekte aus den letzten Semestern.\n\n\n\n\n\n\n\n\n\n\nTestProjekt 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTestProjekt 2\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items\n\nWeitere Projekte finden sie im Archiv.\nZum Archiv"
+    "text": "Hier sehen sie einige Beispiele für Projekte aus den letzten Semestern.\n\n\n\n\n\n\n\n\nTestProjekt 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTestProjekt 2\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items\n\nWeitere Projekte finden sie im Archiv.\nZum Archiv"
   },
   {
     "objectID": "project_archive.html",
@@ -39,7 +39,21 @@
     "href": "projects/TestProjekt-1/TestProjekt-1_page.html",
     "title": "TestProjekt 1",
     "section": "",
-    "text": "Kurze Beschreibung des Projekts und Motivation\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Ausarbeitung\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nAusarbeitung\n\n\n\nAutor:innen\n\n\n\n\n\n\n\n\nBlauer Löwe\n\n\nMax, Genevieve Ponelle, Unknown\n\n\n\n\n\n\nGelber Ochse\n\n\nMorits, Dr Gottlieb Taft\n\n\n\n\n\n\nGrüne Giraffe\n\n\nHänsel, Dr. Knörz, Unknown\n\n\n\n\n\n\nLila Gürteltier\n\n\nGretel, Pepe Nietnagel\n\n\n\n\n\n\nPinker Panther\n\n\nStrubbelpeter, Priehl, Unknown\n\n\n\n\n\n\nRoter Affe\n\n\nHans im Glück, Susie Rixner\n\n\n\n\n\n\nNo matching items"
+    "text": "Kurze Beschreibung des Projekts und Motivation"
+  },
+  {
+    "objectID": "projects/TestProjekt-1/TestProjekt-1_page.html#top-3-ausarbeitungen",
+    "href": "projects/TestProjekt-1/TestProjekt-1_page.html#top-3-ausarbeitungen",
+    "title": "TestProjekt 1",
+    "section": "Top 3 Ausarbeitungen",
+    "text": "Top 3 Ausarbeitungen\n\n\n\n\n\n\n\n\nLila Gürteltier\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPinker Panther\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRoter Affe\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "projects/TestProjekt-1/TestProjekt-1_page.html#weitere-ausarbeitungen",
+    "href": "projects/TestProjekt-1/TestProjekt-1_page.html#weitere-ausarbeitungen",
+    "title": "TestProjekt 1",
+    "section": "Weitere Ausarbeitungen",
+    "text": "Weitere Ausarbeitungen\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Ausarbeitung\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nRang\n\n\n\nAusarbeitung\n\n\n\nAutor:innen\n\n\n\n\n\n\n\n\n1\n\n\nRoter Affe\n\n\nHans im Glück, Susie Rixner\n\n\n\n\n\n\n2\n\n\nPinker Panther\n\n\nStrubbelpeter, Priehl, Unknown\n\n\n\n\n\n\n3\n\n\nLila Gürteltier\n\n\nGretel, Pepe Nietnagel\n\n\n\n\n\n\n4\n\n\nGrüne Giraffe\n\n\nHänsel, Dr. Knörz, Unknown\n\n\n\n\n\n\n5\n\n\nGelber Ochse\n\n\nMorits, Dr Gottlieb Taft\n\n\n\n\n\n\n6\n\n\nBlauer Löwe\n\n\nMax, Genevieve Ponelle, Unknown\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "projects/TestProjekt-2/student_projects/blauer_löwe/blauer_löwe.html",
@@ -88,7 +102,21 @@
     "href": "projects/TestProjekt-2/TestProjekt-2_page.html",
     "title": "TestProjekt 2",
     "section": "",
-    "text": "Kurze Beschreibung des Projekts und Motivation\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Ausarbeitung\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nAusarbeitung\n\n\n\nAutor:innen\n\n\n\n\n\n\n\n\nBlauer Löwe\n\n\nMax, Genevieve Ponelle, Unknown\n\n\n\n\n\n\nGelber Ochse\n\n\nMorits, Dr Gottlieb Taft\n\n\n\n\n\n\nGrüne Giraffe\n\n\nHänsel, Dr. Knörz, Unknown\n\n\n\n\n\n\nLila Gürteltier\n\n\nGretel, Pepe Nietnagel\n\n\n\n\n\n\nPinker Panther\n\n\nStrubbelpeter, Priehl, Unknown\n\n\n\n\n\n\nRoter Affe\n\n\nHans im Glück, Susie Rixner\n\n\n\n\n\n\nNo matching items"
+    "text": "Kurze Beschreibung des Projekts und Motivation"
+  },
+  {
+    "objectID": "projects/TestProjekt-2/TestProjekt-2_page.html#top-3-ausarbeitungen",
+    "href": "projects/TestProjekt-2/TestProjekt-2_page.html#top-3-ausarbeitungen",
+    "title": "TestProjekt 2",
+    "section": "Top 3 Ausarbeitungen",
+    "text": "Top 3 Ausarbeitungen\n\n\n\n\n\n\n\n\nLila Gürteltier\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPinker Panther\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRoter Affe\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "projects/TestProjekt-2/TestProjekt-2_page.html#weitere-ausarbeitungen",
+    "href": "projects/TestProjekt-2/TestProjekt-2_page.html#weitere-ausarbeitungen",
+    "title": "TestProjekt 2",
+    "section": "Weitere Ausarbeitungen",
+    "text": "Weitere Ausarbeitungen\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Ausarbeitung\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nRang\n\n\n\nAusarbeitung\n\n\n\nAutor:innen\n\n\n\n\n\n\n\n\n1\n\n\nRoter Affe\n\n\nHans im Glück, Susie Rixner\n\n\n\n\n\n\n2\n\n\nPinker Panther\n\n\nStrubbelpeter, Priehl, Unknown\n\n\n\n\n\n\n3\n\n\nLila Gürteltier\n\n\nGretel, Pepe Nietnagel\n\n\n\n\n\n\n4\n\n\nGrüne Giraffe\n\n\nHänsel, Dr. Knörz, Unknown\n\n\n\n\n\n\n5\n\n\nGelber Ochse\n\n\nMorits, Dr Gottlieb Taft\n\n\n\n\n\n\n6\n\n\nBlauer Löwe\n\n\nMax, Genevieve Ponelle, Unknown\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "projects/TestProjekt-1/student_projects/gelber_ochse/gelber_ochse.html",

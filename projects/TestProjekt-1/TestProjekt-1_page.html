@@ -72,20 +72,48 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-student_projects .list');
+    const listingTargetEl = window.document.querySelector('#listing-top3 .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
     }
 
     const options = {
-      valueNames: ['listing-title','listing-authors',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-top3'] = new List('listing-top3', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-rest .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-rank','listing-title','listing-authors',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
       searchColumns: ["listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-student_projects'] = new List('listing-student_projects', options);
+    window['quarto-listings']['listing-rest'] = new List('listing-rest', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -172,8 +200,15 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#top-3-ausarbeitungen" id="toc-top-3-ausarbeitungen" class="nav-link active" data-scroll-target="#top-3-ausarbeitungen">Top 3 Ausarbeitungen</a></li>
+  <li><a href="#weitere-ausarbeitungen" id="toc-weitere-ausarbeitungen" class="nav-link" data-scroll-target="#weitere-ausarbeitungen">Weitere Ausarbeitungen</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -198,15 +233,78 @@ window.Quarto = {
 
 
 <p>Kurze Beschreibung des Projekts und Motivation</p>
+<section id="top-3-ausarbeitungen" class="level2">
+<h2 class="anchored" data-anchor-id="top-3-ausarbeitungen">Top 3 Ausarbeitungen</h2>
+<div id="listing-top3" class="quarto-listing quarto-listing-container-grid">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1756112158153" data-listing-reading-time-sort="1" data-listing-word-count-sort="12">
+<a href="../../projects/TestProjekt-1/student_projects/lila_gürteltier/lila_gürteltier.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Lila Gürteltier
+</h5>
+<div class="card-text listing-description delink">
+Autoren: Gretel, Pepe Nietnagel
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
 
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1756112158154" data-listing-reading-time-sort="1" data-listing-word-count-sort="12">
+<a href="../../projects/TestProjekt-1/student_projects/pinker_panther/pinker_panther.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Pinker Panther
+</h5>
+<div class="card-text listing-description delink">
+Autoren: Strubbelpeter, Priehl, Unknown
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
 
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1756112158155" data-listing-reading-time-sort="1" data-listing-word-count-sort="14">
+<a href="../../projects/TestProjekt-1/student_projects/roter_affe/roter_affe.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Roter Affe
+</h5>
+<div class="card-text listing-description delink">
+Autoren: Hans im Glück, Susie Rixner
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
 
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-student_projects">
+</div>
+</div>
+</div>
+</div></a>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+</section>
+<section id="weitere-ausarbeitungen" class="level2">
+<h2 class="anchored" data-anchor-id="weitere-ausarbeitungen">Weitere Ausarbeitungen</h2>
+<div id="listing-rest" class="quarto-listing quarto-listing-container-table">
 <div class="listing-actions-group">
    <div class="input-group input-group-sm quarto-listing-sort">
     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-student_projects-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-student_projects'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+    <select id="listing-rest-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-rest'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
       <option value="" disabled="" selected="" hidden="">Order By</option>
       <option value="index" data-direction="asc">Default</option>
       <option value="listing-title-sort" data-direction="asc">
@@ -224,6 +322,10 @@ window.Quarto = {
 <tr>
 
 <th>
+Rang
+</th>
+
+<th>
 <a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Ausarbeitung</a>
 </th>
 
@@ -235,57 +337,10 @@ Autor:innen
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-listing-file-modified-sort="1755620980428" data-listing-reading-time-sort="1" data-listing-word-count-sort="13" data-listing-title-sort="Blauer Löwe" data-listing-filename-sort="blauer_löwe.qmd">
+<tr data-index="0" data-listing-file-modified-sort="1756112158155" data-listing-reading-time-sort="1" data-listing-word-count-sort="14" data-listing-title-sort="Roter Affe" data-listing-filename-sort="roter_affe.qmd">
 <td>
-<a href="../../projects/TestProjekt-1/student_projects/blauer_löwe/blauer_löwe.html" class="title listing-title">Blauer Löwe</a>
+<span class="listing-rank">1</span>
 </td>
-<td>
-<span class="listing-authors">Max, Genevieve Ponelle, Unknown</span>
-</td>
-
-</tr>
-
-<tr data-index="1" data-listing-file-modified-sort="1755620980454" data-listing-reading-time-sort="1" data-listing-word-count-sort="13" data-listing-title-sort="Gelber Ochse" data-listing-filename-sort="gelber_ochse.qmd">
-<td>
-<a href="../../projects/TestProjekt-1/student_projects/gelber_ochse/gelber_ochse.html" class="title listing-title">Gelber Ochse</a>
-</td>
-<td>
-<span class="listing-authors">Morits, Dr Gottlieb Taft</span>
-</td>
-
-</tr>
-
-<tr data-index="2" data-listing-file-modified-sort="1755620980455" data-listing-reading-time-sort="1" data-listing-word-count-sort="13" data-listing-title-sort="Grüne Giraffe" data-listing-filename-sort="grüne_giraffe.qmd">
-<td>
-<a href="../../projects/TestProjekt-1/student_projects/grüne_giraffe/grüne_giraffe.html" class="title listing-title">Grüne Giraffe</a>
-</td>
-<td>
-<span class="listing-authors">Hänsel, Dr.&nbsp;Knörz, Unknown</span>
-</td>
-
-</tr>
-
-<tr data-index="3" data-listing-file-modified-sort="1755620980456" data-listing-reading-time-sort="1" data-listing-word-count-sort="12" data-listing-title-sort="Lila Gürteltier" data-listing-filename-sort="lila_gürteltier.qmd">
-<td>
-<a href="../../projects/TestProjekt-1/student_projects/lila_gürteltier/lila_gürteltier.html" class="title listing-title">Lila Gürteltier</a>
-</td>
-<td>
-<span class="listing-authors">Gretel, Pepe Nietnagel</span>
-</td>
-
-</tr>
-
-<tr data-index="4" data-listing-file-modified-sort="1755620980457" data-listing-reading-time-sort="1" data-listing-word-count-sort="12" data-listing-title-sort="Pinker Panther" data-listing-filename-sort="pinker_panther.qmd">
-<td>
-<a href="../../projects/TestProjekt-1/student_projects/pinker_panther/pinker_panther.html" class="title listing-title">Pinker Panther</a>
-</td>
-<td>
-<span class="listing-authors">Strubbelpeter, Priehl, Unknown</span>
-</td>
-
-</tr>
-
-<tr data-index="5" data-listing-file-modified-sort="1755620980458" data-listing-reading-time-sort="1" data-listing-word-count-sort="14" data-listing-title-sort="Roter Affe" data-listing-filename-sort="roter_affe.qmd">
 <td>
 <a href="../../projects/TestProjekt-1/student_projects/roter_affe/roter_affe.html" class="title listing-title">Roter Affe</a>
 </td>
@@ -295,10 +350,81 @@ Autor:innen
 
 </tr>
 
+<tr data-index="1" data-listing-file-modified-sort="1756112158154" data-listing-reading-time-sort="1" data-listing-word-count-sort="12" data-listing-title-sort="Pinker Panther" data-listing-filename-sort="pinker_panther.qmd">
+<td>
+<span class="listing-rank">2</span>
+</td>
+<td>
+<a href="../../projects/TestProjekt-1/student_projects/pinker_panther/pinker_panther.html" class="title listing-title">Pinker Panther</a>
+</td>
+<td>
+<span class="listing-authors">Strubbelpeter, Priehl, Unknown</span>
+</td>
+
+</tr>
+
+<tr data-index="2" data-listing-file-modified-sort="1756112158153" data-listing-reading-time-sort="1" data-listing-word-count-sort="12" data-listing-title-sort="Lila Gürteltier" data-listing-filename-sort="lila_gürteltier.qmd">
+<td>
+<span class="listing-rank">3</span>
+</td>
+<td>
+<a href="../../projects/TestProjekt-1/student_projects/lila_gürteltier/lila_gürteltier.html" class="title listing-title">Lila Gürteltier</a>
+</td>
+<td>
+<span class="listing-authors">Gretel, Pepe Nietnagel</span>
+</td>
+
+</tr>
+
+<tr data-index="3" data-listing-file-modified-sort="1756112158152" data-listing-reading-time-sort="1" data-listing-word-count-sort="13" data-listing-title-sort="Grüne Giraffe" data-listing-filename-sort="grüne_giraffe.qmd">
+<td>
+<span class="listing-rank">4</span>
+</td>
+<td>
+<a href="../../projects/TestProjekt-1/student_projects/grüne_giraffe/grüne_giraffe.html" class="title listing-title">Grüne Giraffe</a>
+</td>
+<td>
+<span class="listing-authors">Hänsel, Dr.&nbsp;Knörz, Unknown</span>
+</td>
+
+</tr>
+
+<tr data-index="4" data-listing-file-modified-sort="1756112158151" data-listing-reading-time-sort="1" data-listing-word-count-sort="13" data-listing-title-sort="Gelber Ochse" data-listing-filename-sort="gelber_ochse.qmd">
+<td>
+<span class="listing-rank">5</span>
+</td>
+<td>
+<a href="../../projects/TestProjekt-1/student_projects/gelber_ochse/gelber_ochse.html" class="title listing-title">Gelber Ochse</a>
+</td>
+<td>
+<span class="listing-authors">Morits, Dr Gottlieb Taft</span>
+</td>
+
+</tr>
+
+<tr data-index="5" data-listing-file-modified-sort="1756112158123" data-listing-reading-time-sort="1" data-listing-word-count-sort="13" data-listing-title-sort="Blauer Löwe" data-listing-filename-sort="blauer_löwe.qmd">
+<td>
+<span class="listing-rank">6</span>
+</td>
+<td>
+<a href="../../projects/TestProjekt-1/student_projects/blauer_löwe/blauer_löwe.html" class="title listing-title">Blauer Löwe</a>
+</td>
+<td>
+<span class="listing-authors">Max, Genevieve Ponelle, Unknown</span>
+</td>
+
+</tr>
+
 </tbody>
 </table>
 <div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</div>
+
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
